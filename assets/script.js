@@ -28,3 +28,12 @@ arrowRight.addEventListener('click', (e) => {
 	console.log('je vais a droite');
 })
 
+const dotsSlider = document.querySelector('div .dots');
+
+const bulletSlider = `<div class='dot'></div>`;
+
+for (let slide of slides) {
+	dotsSlider.insertAdjacentHTML('afterbegin', bulletSlider);
+}
+
+
