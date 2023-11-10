@@ -17,15 +17,26 @@ const slides = [
 	}
 ]
 
+const imgSlide = document.querySelector('.banner-img')
+
+const tagLine = document.querySelector('p');
+
 
 const arrowLeft = document.querySelector('#banner .arrow_left');
 arrowLeft.addEventListener('click', (e) => {
 	console.log('je vais a gauche');
+	nextSlide(-1);
 })
 
 const arrowRight = document.querySelector('#banner .arrow_right');
 arrowRight.addEventListener('click', (e) => {
 	console.log('je vais a droite');
+	nextSlide(1);
+
+	/* dotList[0].classList.remove('dot_selected');
+	dotList[1].classList.add('dot_selected'); */ 
+	
+	
 })
 
 const dotsSlider = document.querySelector('div .dots');
@@ -36,4 +47,15 @@ for (let slide of slides) {
 	dotsSlider.insertAdjacentHTML('afterbegin', bulletSlider);
 }
 
+const dotList = document.querySelectorAll('.dots .dot');
+dotList[0].classList.add('dot_selected');
+console.log(dotList);
 
+
+// Fonction changement image dans le slide et changement de tagline 
+let numero = 0;
+function nextSlide(sens) {
+	numero = numero + sens;
+	imgSlide.src ="./assets/images/slideshow/" + slides[numero].image;
+	tagLine.innerHTML = slides[numero].tagLine;
+}
