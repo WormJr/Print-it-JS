@@ -23,19 +23,18 @@ const tagLine = document.querySelector('p');
 
 
 const arrowLeft = document.querySelector('#banner .arrow_left');
+
 arrowLeft.addEventListener('click', (e) => {
 	console.log('je vais a gauche');
 	nextSlide(-1);
+	dotList[numero + 1].classList.remove('dot_selected');
 })
 
 const arrowRight = document.querySelector('#banner .arrow_right');
 arrowRight.addEventListener('click', (e) => {
 	console.log('je vais a droite');
 	nextSlide(1);
-
-	/* dotList[0].classList.remove('dot_selected');
-	dotList[1].classList.add('dot_selected'); */ 
-	
+	dotList[numero - 1].classList.remove('dot_selected');
 	
 })
 
@@ -48,14 +47,14 @@ for (let slide of slides) {
 }
 
 const dotList = document.querySelectorAll('.dots .dot');
-dotList[0].classList.add('dot_selected');
-console.log(dotList);
+ dotList[0].classList.add('dot_selected');
 
 
 // Fonction changement image dans le slide et changement de tagline 
 let numero = 0;
-function nextSlide(sens) {
+const nextSlide = (sens) => {
 	numero = numero + sens;
 	imgSlide.src ="./assets/images/slideshow/" + slides[numero].image;
 	tagLine.innerHTML = slides[numero].tagLine;
+	dotList[numero].classList.add('dot_selected');
 }
