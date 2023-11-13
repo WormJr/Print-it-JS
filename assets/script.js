@@ -18,24 +18,20 @@ const slides = [
 ]
 
 const imgSlide = document.querySelector('.banner-img')
-
 const tagLine = document.querySelector('p');
-
-
 const arrowLeft = document.querySelector('#banner .arrow_left');
 
+// Evenements sur le click de la flèche de gauche ( appel de la fonction nextSlide avec le sens -1 en parametre )
 arrowLeft.addEventListener('click', (e) => {
 	console.log('je vais a gauche');
 	nextSlide(-1);
-	dotList[numero + 1].classList.remove('dot_selected');
 })
 
+// Eenement click sur la flèche de droite ( appel de la fonction nextSlide) avec le sens 1 en parametre 
 const arrowRight = document.querySelector('#banner .arrow_right');
 arrowRight.addEventListener('click', (e) => {
 	console.log('je vais a droite');
 	nextSlide(1);
-	dotList[numero - 1].classList.remove('dot_selected');
-	
 })
 
 const dotsSlider = document.querySelector('div .dots');
@@ -47,20 +43,20 @@ for (let slide of slides) {
 }
 
 const dotList = document.querySelectorAll('.dots .dot');
- dotList[0].classList.add('dot_selected');
+dotList[0].classList.add('dot_selected');
 
 
 // Fonction changement image dans le slide et changement de tagline 
 let numero = 0;
 
 const nextSlide = (sens) => {
-	numero = (numero + sens + slides.length)% slides.length;
+	numero = (numero + sens + slides.length) % slides.length;
 	updateSlide();
 }
 
 // Fonction fléchés qui explique ce qu'il se passe au click -> on change l'image le texte et on fais appel a la fonction upadate Dots.
 const updateSlide = () => {
-	imgSlide.src ="./assets/images/slideshow/" + slides[numero].image;
+	imgSlide.src = "./assets/images/slideshow/" + slides[numero].image;
 	tagLine.innerHTML = slides[numero].tagLine;
 	updateDots();
 }
@@ -69,7 +65,7 @@ const updateSlide = () => {
 // Fonction fléché qui explique la mise a jour des bullets points du slider, il active le point qui est égal a l'image affichés mais enleve l'activation des autres 
 const updateDots = () => {
 	dotList.forEach((dot, index) => {
-		if (index === numero ) {
+		if (index === numero) {
 			dot.classList.add('dot_selected')
 		} else {
 			dot.classList.remove('dot_selected')
