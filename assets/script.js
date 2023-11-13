@@ -52,9 +52,35 @@ const dotList = document.querySelectorAll('.dots .dot');
 
 // Fonction changement image dans le slide et changement de tagline 
 let numero = 0;
+
 const nextSlide = (sens) => {
-	numero = numero + sens;
+	numero = (numero + sens + slides.length)% slides.length;
+	updateSlide();
+}
+
+// Fonction fléchés qui explique ce qu'il se passe au click -> on change l'image le texte et on fais appel a la fonction upadate Dots.
+const updateSlide = () => {
 	imgSlide.src ="./assets/images/slideshow/" + slides[numero].image;
 	tagLine.innerHTML = slides[numero].tagLine;
-	dotList[numero].classList.add('dot_selected');
+	updateDots();
 }
+
+
+// Fonction fléché qui explique la mise a jour des bullets points du slider, il active le point qui est égal a l'image affichés mais enleve l'activation des autres 
+const updateDots = () => {
+	dotList.forEach((dot, index) => {
+		if (index === numero ) {
+			dot.classList.add('dot_selected')
+		} else {
+			dot.classList.remove('dot_selected')
+		}
+	});
+};
+
+// Ajout d'un évenement qui permet au click sur le bullet point d'afficher le slide correspondant (image, texte)
+dotList.forEach((dot, index) => {
+	dot.addEventListener('click', () => {
+		numero = index;
+		updateSlide();
+	})
+})
