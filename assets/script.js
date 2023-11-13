@@ -80,3 +80,6 @@ dotList.forEach((dot, index) => {
 		updateSlide();
 	})
 })
+
+// Ajout d'un défilement automatique vers la droite toutes les 4 secondes
+setInterval("nextSlide(1)", 4000);
