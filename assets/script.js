@@ -23,14 +23,12 @@ const arrowLeft = document.querySelector('#banner .arrow_left');
 
 // Evenements sur le click de la flèche de gauche ( appel de la fonction nextSlide avec le sens -1 en parametre )
 arrowLeft.addEventListener('click', (e) => {
-	console.log('je vais a gauche');
 	nextSlide(-1);
 })
 
 // Eenement click sur la flèche de droite ( appel de la fonction nextSlide) avec le sens 1 en parametre 
 const arrowRight = document.querySelector('#banner .arrow_right');
 arrowRight.addEventListener('click', (e) => {
-	console.log('je vais a droite');
 	nextSlide(1);
 })
 
